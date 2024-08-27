@@ -10,5 +10,4 @@ public class PullUpbackendApplication {
 		SpringApplication.run(PullUpbackendApplication.class, args);
 	}
 
-
 }
