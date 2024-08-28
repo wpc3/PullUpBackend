@@ -17,6 +17,8 @@ public UserProfileService(@Autowired UserProfileRepository repository){
 
 public UserProfile create(UserProfile userProfileToPersist){
     return repository.save(userProfileToPersist);
+
+
 }
 
 
