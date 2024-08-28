@@ -20,6 +20,7 @@ public UserProfile(String username, String password, String longitude, String la
     this.password = password;
     this.longitude = longitude;
     this.latitude = latitude;
+
 }
 
 
