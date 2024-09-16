@@ -17,9 +17,12 @@ public UserProfile create(UserProfile userProfileToPersist){
     return repository.save(userProfileToPersist);
 
 
+
 }
 
-
+    public void delete(UserProfile userProfile){
+        repository.delete(userProfile);
+    }
 
 
 }

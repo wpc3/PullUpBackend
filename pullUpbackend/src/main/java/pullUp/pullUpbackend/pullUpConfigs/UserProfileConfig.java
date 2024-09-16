@@ -16,7 +16,9 @@ public UserProfileConfig(@Autowired UserProfileService repository){
 
 @PostConstruct
 public void setup(){
-service.create(new UserProfile(1L,"wpc3","123","123","456"));
+//service.create(new UserProfile(1L,"wpc3","123","123","456"));
+//UserProfile will = service.create(new UserProfile(1L,"wpc3","123","123","456"));
+//service.delete(will);
 }
 
 }
