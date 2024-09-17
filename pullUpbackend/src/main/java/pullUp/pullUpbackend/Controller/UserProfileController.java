@@ -22,7 +22,13 @@ public class UserProfileController {
         return new ResponseEntity<>(service.findUserProfileById(id), HttpStatus.OK);
     }
 
-    @PostMapping("/userProfile/")
+    @GetMapping("/userProfile/username/{username}")
+    public ResponseEntity<UserProfile> showUserProfileByUsername(@PathVariable("username") String username){
+
+        return new ResponseEntity<>(service.findUserProfileByUserName(username), HttpStatus.OK);
+    }
+
+    @PostMapping("/userProfile")
     public ResponseEntity<UserProfile> createUserProfile(@RequestBody UserProfile userProfile){
         return new ResponseEntity<>(service.create(userProfile), HttpStatus.CREATED);
     }

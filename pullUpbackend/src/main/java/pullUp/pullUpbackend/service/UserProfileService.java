@@ -26,5 +26,9 @@ public UserProfile findUserProfileById(Long id){
         repository.delete(userProfile);
     }
 
+ public UserProfile findUserProfileByUserName(String username){
+    return repository.findProfileByUsername(username);
+ }
+
 
 }
