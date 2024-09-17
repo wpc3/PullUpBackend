@@ -6,14 +6,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import pullUp.pullUpbackend.model.UserProfile;
+import pullUp.pullUpbackend.repository.UserProfileRepository;
 import pullUp.pullUpbackend.service.UserProfileService;
 
 @RestController
 public class UserProfileController {
   private final UserProfileService service;
+  private final UserProfileRepository repository;
 
-    public UserProfileController(@Autowired UserProfileService service) {
+    public UserProfileController(@Autowired UserProfileService service,
+                                 @Autowired UserProfileRepository repository) {
         this.service = service;
+        this.repository  =repository;
     }
 
     @GetMapping("/userProfile/{id}")
@@ -31,5 +35,11 @@ public class UserProfileController {
     @PostMapping("/userProfile")
     public ResponseEntity<UserProfile> createUserProfile(@RequestBody UserProfile userProfile){
         return new ResponseEntity<>(service.create(userProfile), HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/userProfile/delete/{id}")
+    public ResponseEntity<Void> removeUserProfile(@PathVariable("id") Long id){
+        repository.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }
