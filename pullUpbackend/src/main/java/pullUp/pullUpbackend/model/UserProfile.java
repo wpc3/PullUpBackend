@@ -12,17 +12,15 @@ private Long id;
 
 private String username;
 private String password;
-private String longitude;
-private String latitude;
+
 
 public UserProfile(){}
 
-public UserProfile(Long id,String username, String password, String longitude, String latitude) {
+public UserProfile(Long id,String username, String password) {
     this.id = id;
     this.username = username;
     this.password = password;
-    this.longitude = longitude;
-    this.latitude = latitude;
+
 
 }
 
@@ -51,21 +49,21 @@ public void setPassword(String password) {
     this.password = password;
 }
 
-public String getLongitude() {
-    return longitude;
-}
+//public String getLongitude() {
+//    return longitude;
+//}
 
 
-public void setLongitude(String longitude) {
-    this.longitude = longitude;
-}
-
-public String getLatitude() {
-    return latitude;
-}
-
-public void setLatitude(String latitude) {
-    this.latitude = latitude;
-}
+//public void setLongitude(String longitude) {
+//    this.longitude = longitude;
+//}
+//
+//public String getLatitude() {
+//    return latitude;
+//}
+//
+//public void setLatitude(String latitude) {
+//    this.latitude = latitude;
+//}
 
 }

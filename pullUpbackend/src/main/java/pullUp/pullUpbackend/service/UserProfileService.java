@@ -15,15 +15,20 @@ public UserProfileService(@Autowired UserProfileRepository repository){
 
 public UserProfile create(UserProfile userProfileToPersist){
     return repository.save(userProfileToPersist);
+}
 
+public UserProfile findUserProfileById(Long id){
 
-
-
+    return repository.findById(id).get();
 }
 
     public void delete(UserProfile userProfile){
         repository.delete(userProfile);
     }
+
+ public UserProfile findUserProfileByUserName(String username){
+    return repository.findProfileByUsername(username);
+ }
 
 
 }
