@@ -9,6 +9,8 @@ import pullUp.pullUpbackend.model.UserProfile;
 import pullUp.pullUpbackend.repository.UserProfileRepository;
 import pullUp.pullUpbackend.service.UserProfileService;
 
+import java.util.List;
+
 @RestController
 public class UserProfileController {
   private final UserProfileService service;
@@ -24,6 +26,11 @@ public class UserProfileController {
     public ResponseEntity<UserProfile> showUserProfileById(@PathVariable("id") Long id){
 
         return new ResponseEntity<>(service.findUserProfileById(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/userProfiles")
+    public List<UserProfile> findAllUserProfiles(){
+        return (List<UserProfile>) repository.findAll();
     }
 
     @GetMapping("/userProfile/username/{username}")
