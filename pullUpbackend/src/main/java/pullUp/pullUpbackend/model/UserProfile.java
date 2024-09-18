@@ -18,7 +18,7 @@ private String password;
         joinColumns = @JoinColumn(name = "userProfile_id"),
         inverseJoinColumns = @JoinColumn(name = "ballCourt_id")
 )
-private List<BasketballCourts> basketballCourts;
+private List<BasketballCourt> basketballCourts;
 
 public UserProfile(){}
 

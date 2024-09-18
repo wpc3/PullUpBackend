@@ -1,10 +1,9 @@
 package pullUp.pullUpbackend.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
-import pullUp.pullUpbackend.model.BasketballCourts;
+import pullUp.pullUpbackend.model.BasketballCourt;
 
-public interface BasketballCourtsRepository extends CrudRepository<BasketballCourts,Long> {
+public interface BasketballCourtsRepository extends CrudRepository<BasketballCourt,Long> {
 
 
 }
