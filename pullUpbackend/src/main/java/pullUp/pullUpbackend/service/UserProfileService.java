@@ -27,8 +27,9 @@ public UserProfile findUserProfileById(Long id){
     }
 
  public UserProfile findUserProfileByUserName(String username){
-    return repository.findProfileByUsername(username);
+    return repository.findSavedCourtsByUsername(username);
  }
+
 
 
 }

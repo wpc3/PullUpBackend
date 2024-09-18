@@ -1,7 +1,9 @@
 package pullUp.pullUpbackend.model;
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class UserProfile {
@@ -18,7 +20,7 @@ private String password;
         joinColumns = @JoinColumn(name = "userProfile_id"),
         inverseJoinColumns = @JoinColumn(name = "ballCourt_id")
 )
-private List<BasketballCourt> basketballCourts;
+private Set<BasketballCourt> basketballCourts = new HashSet<>();
 
 public UserProfile(){}
 
@@ -55,6 +57,24 @@ public String getPassword() {
 public void setPassword(String password) {
     this.password = password;
 }
+
+    public Set<BasketballCourt> getBasketballCourts() {
+        return basketballCourts;
+    }
+
+    public void setBasketballCourts(Set<BasketballCourt> basketballCourts) {
+        this.basketballCourts = basketballCourts;
+    }
+
+    @Override
+    public String toString() {
+        return "UserProfile{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", basketballCourts=" + basketballCourts +
+                '}';
+    }
 
 //public String getLongitude() {
 //    return longitude;
