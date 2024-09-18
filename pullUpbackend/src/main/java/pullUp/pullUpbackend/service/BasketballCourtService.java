@@ -12,8 +12,10 @@ import java.util.List;
 public class BasketballCourtService {
     private BasketballCourtsRepository repository;
     private UserProfileRepository userProfileRepository;
-    public BasketballCourtService(@Autowired BasketballCourtsRepository repository) {
+    public BasketballCourtService(@Autowired BasketballCourtsRepository repository,
+                                  @Autowired UserProfileRepository userProfileRepository) {
         this.repository = repository;
+        this.userProfileRepository = userProfileRepository;
     }
 
     public List<BasketballCourt> findAllBasketballCourts(){

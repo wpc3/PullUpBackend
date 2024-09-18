@@ -1,8 +1,11 @@
 package pullUp.pullUpbackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class BasketballCourt {
@@ -17,8 +20,9 @@ public class BasketballCourt {
     private String longitude;
     private String latitude;
 
-    @ManyToMany(mappedBy = "basketballCourts")
-    private List<UserProfile> userProfiles;
+    @ManyToMany( mappedBy = "basketballCourts")
+    @JsonIgnore
+    private Set<UserProfile> userProfiles = new HashSet<>();
 
     public BasketballCourt(){}
 
@@ -85,5 +89,27 @@ public class BasketballCourt {
 
     public void setLongitude(String longitude) {
         this.longitude = longitude;
+    }
+
+    public Set<UserProfile> getUserProfiles() {
+        return userProfiles;
+    }
+
+    public void setUserProfiles(Set<UserProfile> userProfiles) {
+        this.userProfiles = userProfiles;
+    }
+
+    @Override
+    public String toString() {
+        return "BasketballCourt{" +
+                "id=" + id +
+                ", court_name='" + court_name + '\'' +
+                ", state='" + state + '\'' +
+                ", zipcode=" + zipcode +
+                ", address='" + address + '\'' +
+                ", longitude='" + longitude + '\'' +
+                ", latitude='" + latitude + '\'' +
+                ", userProfiles=" + userProfiles +
+                '}';
     }
 }
