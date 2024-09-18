@@ -5,12 +5,12 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-public class BasketballCourts {
+public class BasketballCourt {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String name;
+    private String court_name;
     private String state;
     private Integer zipcode;
     private String address;
@@ -20,10 +20,10 @@ public class BasketballCourts {
     @ManyToMany(mappedBy = "basketballCourts")
     private List<UserProfile> userProfiles;
 
-    public BasketballCourts(){}
+    public BasketballCourt(){}
 
-    public BasketballCourts(String name, String state, Integer zipcode, String address, String longitude, String latitude ){
-        this.name = name;
+    public BasketballCourt(String court_name, String state, Integer zipcode, String address, String longitude, String latitude ){
+        this.court_name = court_name;
         this.state =state;
         this.zipcode = zipcode;
         this.address = address;
@@ -39,12 +39,12 @@ public class BasketballCourts {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getCourt_name() {
+        return court_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCourt_name(String court_name) {
+        this.court_name = court_name;
     }
 
     public String getState() {
