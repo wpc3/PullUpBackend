@@ -1,9 +1,8 @@
 package pullUp.pullUpbackend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class BasketballCourts {
@@ -18,6 +17,9 @@ public class BasketballCourts {
     private String longitude;
     private String latitude;
 
+    @ManyToMany(mappedBy = "basketballCourts")
+    private List<UserProfile> userProfiles;
+
     public BasketballCourts(){}
 
     public BasketballCourts(String name, String state, Integer zipcode, String address, String longitude, String latitude ){
@@ -27,5 +29,61 @@ public class BasketballCourts {
         this.address = address;
         this.longitude = longitude;
         this.latitude = latitude;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public Integer getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(Integer zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 }

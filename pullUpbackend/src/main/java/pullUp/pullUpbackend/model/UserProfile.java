@@ -1,8 +1,7 @@
 package pullUp.pullUpbackend.model;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class UserProfile {
@@ -13,6 +12,13 @@ private Long id;
 private String username;
 private String password;
 
+@ManyToMany
+@JoinTable(
+        name = "savedCourts",
+        joinColumns = @JoinColumn(name = "userProfile_id"),
+        inverseJoinColumns = @JoinColumn(name = "ballCourt_id")
+)
+private List<BasketballCourts> basketballCourts;
 
 public UserProfile(){}
 
