@@ -1,9 +1,8 @@
 package pullUp.pullUpbackend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class BasketballCourts {
@@ -17,6 +16,9 @@ public class BasketballCourts {
     private String address;
     private String longitude;
     private String latitude;
+
+    @ManyToMany(mappedBy = "basketballCourts")
+    private List<UserProfile> userProfiles;
 
     public BasketballCourts(){}
 
