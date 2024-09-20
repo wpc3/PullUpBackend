@@ -66,6 +66,21 @@ public void setPassword(String password) {
         this.basketballCourts = basketballCourts;
     }
 
+    public UserProfile addBasketballCourt(BasketballCourt basketballCourt){
+    this.basketballCourts.add(basketballCourt);
+    basketballCourt.getUserProfiles().add(this);
+    return this;
+    }
+
+    public UserProfile removeBasketballCourt(BasketballCourt basketballCourt){
+    this.basketballCourts.remove(basketballCourt);
+    basketballCourt.getUserProfiles().remove(this);
+
+    return this;
+    }
+
+
+
     @Override
     public String toString() {
         return "UserProfile{" +
