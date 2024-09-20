@@ -26,5 +26,8 @@ public class BasketballCourtService {
         return null;
     }
 
+    public BasketballCourt findBallCourtByName(String courtName){
+        return repository.findBasketballCourtByCourtName(courtName);
+    }
 
 }

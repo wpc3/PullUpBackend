@@ -4,14 +4,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pullUp.pullUpbackend.model.BasketballCourt;
 import pullUp.pullUpbackend.model.UserProfile;
+import pullUp.pullUpbackend.repository.BasketballCourtsRepository;
 import pullUp.pullUpbackend.repository.UserProfileRepository;
 
 @Service
 public class UserProfileService {
 private UserProfileRepository repository;
+private BasketballCourtsRepository basketballCourtsRepository;
 
-public UserProfileService(@Autowired UserProfileRepository repository){
+public UserProfileService(@Autowired UserProfileRepository repository,
+                          @Autowired BasketballCourtsRepository basketballCourtsRepository){
     this.repository = repository;
+    this.basketballCourtsRepository = basketballCourtsRepository;
 }
 
 public UserProfile create(UserProfile userProfileToPersist){
@@ -31,11 +35,16 @@ public UserProfile findUserProfileById(Long id){
     return repository.findProfileByUsername(username);
  }
 
- public void saveACourtByUsername(UserProfile user, String courName){
-    BasketballCourt savedCourt = new BasketballCourt();
-    savedCourt.setCourt_name(courName);
+ public UserProfile saveACourtByUsername(Long userId, Long courtId){
+ UserProfile userProfile = repository.findById(userId).orElseThrow(() -> new RuntimeException("user not found"));
+ BasketballCourt basketballCourt = basketballCourtsRepository.findById(courtId).orElseThrow(() ->new RuntimeException("court not found") );
+ userProfile.addBasketballCourt(basketballCourt);
 
-    user.getBasketballCourts().add(savedCourt);
+   return repository.save(userProfile);
+
+
+
+
  }
 
 

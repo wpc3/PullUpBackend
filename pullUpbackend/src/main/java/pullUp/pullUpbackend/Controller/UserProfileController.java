@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import pullUp.pullUpbackend.model.BasketballCourt;
 import pullUp.pullUpbackend.model.UserProfile;
+import pullUp.pullUpbackend.repository.BasketballCourtsRepository;
 import pullUp.pullUpbackend.repository.UserProfileRepository;
 import pullUp.pullUpbackend.service.UserProfileService;
 
@@ -16,16 +17,19 @@ import java.util.List;
 public class UserProfileController {
   private final UserProfileService service;
   private final UserProfileRepository repository;
+  private final BasketballCourtsRepository basketballCourtsRepository;
 
     public UserProfileController(@Autowired UserProfileService service,
-                                 @Autowired UserProfileRepository repository) {
+                                 @Autowired UserProfileRepository repository,
+                                 @Autowired BasketballCourtsRepository basketballCourtsRepository) {
         this.service = service;
-        this.repository  =repository;
+        this.repository = repository;
+        this.basketballCourtsRepository = basketballCourtsRepository;
     }
 
     @GetMapping("/userProfile/{id}")
     public ResponseEntity<UserProfile> showUserProfileById(@PathVariable("id") Long id){
-
+        System.out.println(service.findUserProfileById(id));
         return new ResponseEntity<>(service.findUserProfileById(id), HttpStatus.OK);
     }
 
@@ -51,15 +55,20 @@ public class UserProfileController {
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/userProfile/username/{username}")
+    @PutMapping("/userProfile/username/{userId}/ballCourt/{courtId}")
     public ResponseEntity<UserProfile> addCourtsToUserProfile(
-            @PathVariable("username") String username,
-            @RequestBody UserProfile userProfile,
-            String courtName
-            ){
-        service.findUserProfileByUserName(username);
-        service.saveACourtByUsername(userProfile,courtName);
+            @PathVariable("userId") Long userId,
+            @PathVariable("courtId") Long courtId,
+            @RequestBody UserProfile userProfile
 
-        return ResponseEntity.noContent().build();
+            ){
+
+        userProfile = service.saveACourtByUsername(userId,courtId);
+
+        System.out.println("username " + userId);
+        System.out.println("courtName " + courtId);
+//        System.out.println("user profile: " + userProfile);
+
+     return ResponseEntity.ok(userProfile)  ;
     }
 }
