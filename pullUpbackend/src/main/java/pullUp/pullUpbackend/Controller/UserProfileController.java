@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import pullUp.pullUpbackend.model.BasketballCourt;
 import pullUp.pullUpbackend.model.UserProfile;
 import pullUp.pullUpbackend.repository.UserProfileRepository;
 import pullUp.pullUpbackend.service.UserProfileService;
@@ -47,6 +48,18 @@ public class UserProfileController {
     @DeleteMapping("/userProfile/delete/{id}")
     public ResponseEntity<Void> removeUserProfile(@PathVariable("id") Long id){
         repository.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/userProfile/username/{username}")
+    public ResponseEntity<UserProfile> addCourtsToUserProfile(
+            @PathVariable("username") String username,
+            @RequestBody UserProfile userProfile,
+            String courtName
+            ){
+        service.findUserProfileByUserName(username);
+        service.saveACourtByUsername(userProfile,courtName);
+
         return ResponseEntity.noContent().build();
     }
 }

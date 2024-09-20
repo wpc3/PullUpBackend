@@ -2,6 +2,7 @@ package pullUp.pullUpbackend.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pullUp.pullUpbackend.model.BasketballCourt;
 import pullUp.pullUpbackend.model.UserProfile;
 import pullUp.pullUpbackend.repository.UserProfileRepository;
 
@@ -28,6 +29,13 @@ public UserProfile findUserProfileById(Long id){
 
  public UserProfile findUserProfileByUserName(String username){
     return repository.findSavedCourtsByUsername(username);
+ }
+
+ public void saveACourtByUsername(UserProfile user, String courName){
+    BasketballCourt savedCourt = new BasketballCourt();
+    savedCourt.setCourt_name(courName);
+
+    user.getBasketballCourts().add(savedCourt);
  }
 
 
