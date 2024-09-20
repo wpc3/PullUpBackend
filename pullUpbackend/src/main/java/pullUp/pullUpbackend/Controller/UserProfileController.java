@@ -51,13 +51,14 @@ public class UserProfileController {
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("/userProfile/username/{username}")
+    @PutMapping("/userProfile/username/{username}/ballCourt/{courtName}")
     public ResponseEntity<UserProfile> addCourtsToUserProfile(
             @PathVariable("username") String username,
-            @RequestBody UserProfile userProfile,
-            String courtName
+            @PathVariable("courtName") String courtName,
+            @RequestBody UserProfile userProfile
             ){
-        service.findUserProfileByUserName(username);
+
+        userProfile.setUsername(username);
         service.saveACourtByUsername(userProfile,courtName);
 
         return ResponseEntity.noContent().build();
