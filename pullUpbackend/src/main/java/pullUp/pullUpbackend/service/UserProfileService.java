@@ -35,10 +35,16 @@ public UserProfile findUserProfileById(Long id){
     return repository.findProfileByUsername(username);
  }
 
- public void saveACourtByUsername(UserProfile user, String courName){
-    BasketballCourt basketballCourt = basketballCourtsRepository.findBasketballCourtByCourtName(courName);
-    basketballCourt.setCourt_name(courName);
-    user.addBasketballCourt(basketballCourt);
+ public UserProfile saveACourtByUsername(Long userId, Long courtId){
+ UserProfile userProfile = repository.findById(userId).orElseThrow(() -> new RuntimeException("user not found"));
+ BasketballCourt basketballCourt = basketballCourtsRepository.findById(courtId).orElseThrow(() ->new RuntimeException("court not found") );
+ userProfile.addBasketballCourt(basketballCourt);
+
+   return repository.save(userProfile);
+
+
+
+
  }
 
 
