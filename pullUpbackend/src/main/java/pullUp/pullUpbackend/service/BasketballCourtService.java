@@ -30,4 +30,9 @@ public class BasketballCourtService {
         return repository.findBasketballCourtByCourtName(courtName);
     }
 
+    public BasketballCourt createABasketballCourt(BasketballCourt basketballCourt){
+
+        return repository.save(basketballCourt);
+    }
+
 }

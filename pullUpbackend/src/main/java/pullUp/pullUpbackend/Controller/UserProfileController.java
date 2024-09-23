@@ -3,9 +3,7 @@ package pullUp.pullUpbackend.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import pullUp.pullUpbackend.model.BasketballCourt;
 import pullUp.pullUpbackend.model.UserProfile;
 import pullUp.pullUpbackend.repository.BasketballCourtsRepository;
 import pullUp.pullUpbackend.repository.UserProfileRepository;
@@ -63,12 +61,27 @@ public class UserProfileController {
 
             ){
 
-        userProfile = service.saveACourtByUsername(userId,courtId);
+        userProfile = service.saveACourtByUserId(userId,courtId);
 
-        System.out.println("username " + userId);
-        System.out.println("courtName " + courtId);
-//        System.out.println("user profile: " + userProfile);
+
 
      return ResponseEntity.ok(userProfile)  ;
     }
+
+    @PutMapping("/userProfile/user/{username}/ballCourt/{courtName}")
+    public ResponseEntity<UserProfile> addCourtsToUserProfileByUsername(
+            @PathVariable("username") String username,
+            @PathVariable("courtName") String courtName,
+            @RequestBody UserProfile userProfile
+
+    ){
+
+        userProfile = service.saveACourtByUsername(username,courtName);
+
+
+
+        return ResponseEntity.ok(userProfile)  ;
+    }
+
+
 }
