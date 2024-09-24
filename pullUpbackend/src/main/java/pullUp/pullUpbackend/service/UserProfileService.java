@@ -55,4 +55,15 @@ public UserProfile findUserProfileById(Long id){
     return repository.save(userProfile);
     }
 
+    public UserProfile updateAUserProfile(Long id, UserProfile userProfile){
+    UserProfile userProfile1 = repository.findById(id).get();
+    userProfile1.setId(userProfile.getId());
+    userProfile1.setUsername(userProfile.getUsername());
+    userProfile1.setPassword(userProfile.getPassword());
+
+
+
+    return repository.save(userProfile1);
+    }
+
 }

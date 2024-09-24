@@ -35,4 +35,14 @@ public class BasketballCourtService {
         return repository.save(basketballCourt);
     }
 
+    public void removeBasketballCourt(Long id){
+        BasketballCourt basketballCourt = repository.findById(id).get();
+        repository.delete(basketballCourt);
+    }
+
+    public void removeBasketballCourtByCourt(String court){
+        BasketballCourt basketballCourt = repository.findBasketballCourtByCourtName(court);
+        repository.delete(basketballCourt);
+    }
+
 }

@@ -27,7 +27,7 @@ public class UserProfileController {
 
     @GetMapping("/userProfile/{id}")
     public ResponseEntity<UserProfile> showUserProfileById(@PathVariable("id") Long id){
-        System.out.println(service.findUserProfileById(id));
+        System.out.println("User: " + id);
         return new ResponseEntity<>(service.findUserProfileById(id), HttpStatus.OK);
     }
 
@@ -81,6 +81,14 @@ public class UserProfileController {
 
 
         return ResponseEntity.ok(userProfile)  ;
+    }
+
+    @PutMapping("/userProfile/{id}")
+    public ResponseEntity<UserProfile> updateUserProfiles(
+            @PathVariable("id") Long id,
+            @RequestBody UserProfile userProfile
+    ){
+        return new ResponseEntity<>(service.updateAUserProfile(id, userProfile),HttpStatus.ACCEPTED);
     }
 
 
