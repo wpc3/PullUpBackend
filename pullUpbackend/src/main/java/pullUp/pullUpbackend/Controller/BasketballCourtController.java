@@ -37,5 +37,17 @@ public class BasketballCourtController {
         return new ResponseEntity<>(service.createABasketballCourt(basketballCourt), HttpStatus.CREATED);
     }
 
+    @DeleteMapping("/basketballCourt/{id}")
+    public ResponseEntity<Void> deleteBasketballCourt(@PathVariable("id") Long id){
+        service.removeBasketballCourt(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/basketballCourt/court/{court}")
+    public ResponseEntity<Void> deleteBasketballCourtByCourtName(@PathVariable("court") String court){
+        service.removeBasketballCourtByCourt(court);
+        return ResponseEntity.noContent().build();
+    }
+
 
 }
