@@ -104,6 +104,22 @@ public class BasketballCourt {
         this.userProfiles = userProfiles;
     }
 
+    public CourtType getCourtType() {
+        return courtType;
+    }
+
+    public void setCourtType(CourtType courtType) {
+        this.courtType = courtType;
+    }
+
+    public BasketballCourt addCourtType(int courtTypes){
+    this.courtType.setCourt_type(courtTypes);
+    courtType.getBasketballCourts().add(this);
+    return this;
+    }
+
+
+
     @Override
     public String toString() {
         return "BasketballCourt{" +
