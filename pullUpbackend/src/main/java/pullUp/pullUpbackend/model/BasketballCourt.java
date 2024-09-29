@@ -24,6 +24,11 @@ public class BasketballCourt {
     @JsonIgnore
     private Set<UserProfile> userProfiles = new HashSet<>();
 
+
+    @ManyToOne
+    @JoinColumn(name = "courtType_id")
+    private CourtType courtType;
+
     public BasketballCourt(){}
 
     public BasketballCourt(String court_name, String state, Integer zipcode, String address, String longitude, String latitude ){

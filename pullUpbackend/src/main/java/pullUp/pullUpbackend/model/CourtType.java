@@ -1,9 +1,9 @@
 package pullUp.pullUpbackend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class CourtType {
@@ -13,6 +13,10 @@ public class CourtType {
 private Long id;
 
 private Boolean indoor = false;
+
+@OneToMany(mappedBy = "courtType")
+private Set<BasketballCourt> basketballCourts = new HashSet<>();
+
 
     public CourtType() {
     }
