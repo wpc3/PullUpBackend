@@ -14,6 +14,8 @@ private Long id;
 
 private int court_type;
 
+private String type;
+
 @OneToMany(mappedBy = "courtType")
 private Set<BasketballCourt> basketballCourts = new HashSet<>();
 
@@ -21,9 +23,10 @@ private Set<BasketballCourt> basketballCourts = new HashSet<>();
     public CourtType() {
     }
 
-    public CourtType(Long id, int court_type){
+    public CourtType(Long id, int court_type, String type){
         this.id = id;
         this.court_type = court_type;
+        this.type = type;
     }
 
     public Long getId() {
@@ -40,6 +43,14 @@ private Set<BasketballCourt> basketballCourts = new HashSet<>();
 
     public void setCourt_type(int court_type) {
         this.court_type = court_type;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Set<BasketballCourt> getBasketballCourts() {
