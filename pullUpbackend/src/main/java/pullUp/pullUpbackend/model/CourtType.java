@@ -12,7 +12,7 @@ public class CourtType {
 @GeneratedValue(strategy = GenerationType.AUTO)
 private Long id;
 
-private Boolean indoor = false;
+private int court_type;
 
 @OneToMany(mappedBy = "courtType")
 private Set<BasketballCourt> basketballCourts = new HashSet<>();
@@ -21,9 +21,9 @@ private Set<BasketballCourt> basketballCourts = new HashSet<>();
     public CourtType() {
     }
 
-    public CourtType(Long id, Boolean indoor){
+    public CourtType(Long id, int court_type){
         this.id = id;
-        this.indoor = indoor;
+        this.court_type = court_type;
     }
 
     public Long getId() {
@@ -34,11 +34,19 @@ private Set<BasketballCourt> basketballCourts = new HashSet<>();
         this.id = id;
     }
 
-    public Boolean getIndoor() {
-        return indoor;
+    public int getCourt_type() {
+        return court_type;
     }
 
-    public void setIndoor(Boolean indoor) {
-        this.indoor = indoor;
+    public void setCourt_type(int court_type) {
+        this.court_type = court_type;
+    }
+
+    public Set<BasketballCourt> getBasketballCourts() {
+        return basketballCourts;
+    }
+
+    public void setBasketballCourts(Set<BasketballCourt> basketballCourts) {
+        this.basketballCourts = basketballCourts;
     }
 }
