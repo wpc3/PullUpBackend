@@ -45,4 +45,12 @@ public class BasketballCourtService {
         repository.delete(basketballCourt);
     }
 
+    public BasketballCourt addCourtType(int courtType, String courtName){
+        BasketballCourt basketballCourt = repository.findBasketballCourtByCourtName(courtName);
+
+        basketballCourt.addCourtType(courtType);
+
+        return repository.save(basketballCourt);
+    }
+
 }

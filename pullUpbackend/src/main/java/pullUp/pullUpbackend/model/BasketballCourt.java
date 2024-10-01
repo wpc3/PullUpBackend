@@ -118,7 +118,11 @@ public class BasketballCourt {
     return this;
     }
 
-
+    public BasketballCourt removeCourtType(int courtTypes){
+        this.courtType.setCourt_type(courtTypes);
+        courtType.getBasketballCourts().remove(this);
+        return this;
+    }
 
     @Override
     public String toString() {
