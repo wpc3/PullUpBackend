@@ -60,4 +60,11 @@ private Set<BasketballCourt> basketballCourts = new HashSet<>();
     public void setBasketballCourts(Set<BasketballCourt> basketballCourts) {
         this.basketballCourts = basketballCourts;
     }
+
+    public CourtType addBasketballCourt(BasketballCourt basketballCourt){
+        this.basketballCourts.add(basketballCourt);
+        basketballCourt.setCourtType(this);
+        return this;
+    }
 }
+
