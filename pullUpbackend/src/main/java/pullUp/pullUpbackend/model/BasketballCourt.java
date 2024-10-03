@@ -27,6 +27,7 @@ public class BasketballCourt {
 
     @ManyToOne
     @JoinColumn(name = "courtType_id")
+    @JsonIgnore
     private CourtType courtType;
 
     public BasketballCourt(){}
