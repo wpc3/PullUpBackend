@@ -1,5 +1,6 @@
 package pullUp.pullUpbackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -17,6 +18,7 @@ private int court_type;
 private String type;
 
 @OneToMany(mappedBy = "courtType")
+
 private Set<BasketballCourt> basketballCourts = new HashSet<>();
 
 
