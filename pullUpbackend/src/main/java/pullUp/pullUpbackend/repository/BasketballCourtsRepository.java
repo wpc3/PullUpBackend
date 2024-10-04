@@ -9,4 +9,7 @@ public interface BasketballCourtsRepository extends CrudRepository<BasketballCou
     @Query("SELECT U FROM BasketballCourt U WHERE U.court_name = ?1")
    BasketballCourt findBasketballCourtByCourtName(String courtName);
 
+    @Query(value = "SELECT b.* FROM basketball_court WHERE court_type_id = 1")
+    BasketballCourt findAllOutdoorCourts(Long courtTypeId);
+
 }
