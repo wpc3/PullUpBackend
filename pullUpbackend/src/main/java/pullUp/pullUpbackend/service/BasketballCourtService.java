@@ -53,4 +53,8 @@ public class BasketballCourtService {
         return repository.save(basketballCourt);
     }
 
+    public List<BasketballCourt> findAllOutDoorCourts(){
+        return (List<BasketballCourt>) repository.findAllOutdoorCourtsById();
+    }
+
 }
