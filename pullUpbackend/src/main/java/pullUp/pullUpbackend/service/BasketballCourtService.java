@@ -7,6 +7,7 @@ import pullUp.pullUpbackend.model.UserProfile;
 import pullUp.pullUpbackend.repository.BasketballCourtsRepository;
 import pullUp.pullUpbackend.repository.UserProfileRepository;
 
+import java.io.IOException;
 import java.util.List;
 @Service
 public class BasketballCourtService {
@@ -53,8 +54,9 @@ public class BasketballCourtService {
         return repository.save(basketballCourt);
     }
 
-    public List<BasketballCourt> findAllOutDoorCourts(){
-        return (List<BasketballCourt>) repository.findAllOutdoorCourtsById();
-    }
+    public List<BasketballCourt> findAllOutDoorCourts() {
 
+        return repository.findAllOutdoorCourtsById();
+
+    }
 }
