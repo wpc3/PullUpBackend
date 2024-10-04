@@ -2,6 +2,7 @@ package pullUp.pullUpbackend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import pullUp.pullUpbackend.service.BasketballCourtService;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -68,5 +69,7 @@ private Set<BasketballCourt> basketballCourts = new HashSet<>();
         basketballCourt.setCourtType(this);
         return this;
     }
+
+
 }
 
