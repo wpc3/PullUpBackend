@@ -37,6 +37,11 @@ public class BasketballCourtController {
         return new ResponseEntity<>(service.findAllOutDoorCourts(),HttpStatus.OK);
     }
 
+    @GetMapping("/basketballCourt/Indoors")
+    public ResponseEntity<List<BasketballCourt>> findAllIndoorCourts(){
+        return new ResponseEntity<>(service.findAllInDoorCourts(),HttpStatus.OK);
+    }
+
     @PostMapping("/basketballCourt")
     public ResponseEntity<BasketballCourt> postCourt(@RequestBody BasketballCourt basketballCourt){
         return new ResponseEntity<>(service.createABasketballCourt(basketballCourt), HttpStatus.CREATED);
