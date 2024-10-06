@@ -59,4 +59,9 @@ public class BasketballCourtService {
         return repository.findAllOutdoorCourtsById();
 
     }
+
+    public List<BasketballCourt> findAllInDoorCourts() {
+
+        return repository.findAllIndoorCourtsById();
+    }
 }
