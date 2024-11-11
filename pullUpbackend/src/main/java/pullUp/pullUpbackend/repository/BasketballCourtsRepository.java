@@ -2,10 +2,12 @@ package pullUp.pullUpbackend.repository;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 import pullUp.pullUpbackend.model.BasketballCourt;
 
 import java.util.List;
 
+@Repository
 public interface BasketballCourtsRepository extends CrudRepository<BasketballCourt,Long> {
 
     @Query("SELECT U FROM BasketballCourt U WHERE U.court_name = ?1")
