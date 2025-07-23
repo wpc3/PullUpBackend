@@ -1,12 +1,14 @@
 package pullUp.pullUpbackend.service;
 
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pullUp.pullUpbackend.customException.UnauthorizedException;
 import pullUp.pullUpbackend.model.BasketballCourt;
 import pullUp.pullUpbackend.model.UserProfile;
 import pullUp.pullUpbackend.repository.BasketballCourtsRepository;
 import pullUp.pullUpbackend.repository.UserProfileRepository;
+
+import java.util.Optional;
 
 @Service
 public class UserProfileService {
@@ -23,6 +25,44 @@ public UserProfile create(UserProfile userProfileToPersist){
     return repository.save(userProfileToPersist);
 }
 
+public UserProfile createAnAccount(UserProfile userProfile){
+
+    String username = userProfile.getUsername();
+    String password = userProfile.getPassword();
+
+    if (username == null || username.trim().isEmpty()) {
+        throw new IllegalArgumentException("Username must not be blank.");
+    }
+
+    if (password == null || password.length() < 7) {
+        throw new IllegalArgumentException("Password must be at least 7 characters.");
+    }
+
+    if(repository.existByUsername(username)){
+        throw new IllegalArgumentException("usernameAlreadyExists");
+    }
+
+    return repository.save(userProfile);
+
+}
+
+
+public UserProfile userLogin(UserProfile userProfile){
+
+    String username = userProfile.getUsername();
+    String password = userProfile.getPassword();
+
+    if (username == null || password == null) {
+
+        throw new IllegalArgumentException("Username must not be blank.");
+    }
+
+    return Optional.ofNullable( repository.findProfileByUsername(username))
+            .filter(acc -> acc.getPassword().equals(password))
+            .orElseThrow(() -> new UnauthorizedException("Invalid username or password"));
+
+}
+
 public UserProfile findUserProfileById(Long id){
 
     return repository.findById(id).get();
@@ -33,6 +73,7 @@ public UserProfile findUserProfileById(Long id){
     }
 
  public UserProfile findUserProfileByUserName(String username){
+
     return repository.findProfileByUsername(username);
  }
 
@@ -61,7 +102,7 @@ public UserProfile findUserProfileById(Long id){
     userProfile1.setUsername(userProfile.getUsername());
     userProfile1.setPassword(userProfile.getPassword());
 
-
+        
 
     return repository.save(userProfile1);
     }
