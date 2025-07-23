@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import pullUp.pullUpbackend.customException.UnauthorizedException;
 import pullUp.pullUpbackend.model.UserProfile;
 import pullUp.pullUpbackend.repository.BasketballCourtsRepository;
 import pullUp.pullUpbackend.repository.UserProfileRepository;
@@ -44,8 +45,22 @@ public class UserProfileController {
 
     @PostMapping("/userProfile")
     public ResponseEntity<UserProfile> createUserProfile(@RequestBody UserProfile userProfile){
-        return new ResponseEntity<>(service.create(userProfile), HttpStatus.CREATED);
+        return new ResponseEntity<>(service.createAnAccount(userProfile), HttpStatus.CREATED);
     }
+
+    @PostMapping("/userProfile/login")
+    public ResponseEntity<UserProfile> loginToProfile(@RequestBody UserProfile userProfile){
+
+        try {
+            UserProfile loggedInAccount = service.userLogin(userProfile);
+            return ResponseEntity.ok(loggedInAccount);
+        } catch (UnauthorizedException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
 
     @DeleteMapping("/userProfile/delete/{id}")
     public ResponseEntity<Void> removeUserProfile(@PathVariable("id") Long id){
