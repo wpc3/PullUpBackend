@@ -101,6 +101,7 @@ public UserProfile findUserProfileById(Long id){
     userProfile1.setId(userProfile.getId());
     userProfile1.setUsername(userProfile.getUsername());
     userProfile1.setPassword(userProfile.getPassword());
+    userProfile1.setRank(userProfile.getRank());
 
         
 
