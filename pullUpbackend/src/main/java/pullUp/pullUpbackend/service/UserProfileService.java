@@ -38,7 +38,7 @@ public UserProfile createAnAccount(UserProfile userProfile){
         throw new IllegalArgumentException("Password must be at least 7 characters.");
     }
 
-    if(repository.existByUsername(username)){
+    if(repository.existsByUsername(username)){
         throw new IllegalArgumentException("usernameAlreadyExists");
     }
 
