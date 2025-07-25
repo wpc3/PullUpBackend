@@ -23,6 +23,8 @@ private int rank;
 )
 private Set<BasketballCourt> basketballCourts = new HashSet<>();
 
+
+
 public UserProfile(){}
 
 public UserProfile(Long id,String username, String password, int rank) {
