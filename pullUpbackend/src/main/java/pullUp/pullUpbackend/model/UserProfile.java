@@ -23,6 +23,14 @@ private int rank;
 )
 private Set<BasketballCourt> basketballCourts = new HashSet<>();
 
+@ManyToMany
+@JoinTable(
+        name = "friendships",
+        joinColumns = @JoinColumn(name = "user_id"),
+        inverseJoinColumns = @JoinColumn(name = "friend_id")
+)
+private Set<UserProfile> userProfiles = new HashSet<>();
+
 
 
 public UserProfile(){}
@@ -89,6 +97,22 @@ public void setPassword(String password) {
 
     public void setRank(int rank) {
         this.rank = rank;
+    }
+
+    public Set<UserProfile> getUserProfiles() {
+        return userProfiles;
+    }
+
+    public void setUserProfiles(Set<UserProfile> userProfiles) {
+        this.userProfiles = userProfiles;
+    }
+
+    public UserProfile addUserProfile(UserProfile userProfile){
+        this.userProfiles.add(userProfile);
+        userProfile.getUserProfiles().add(this);
+
+        return this;
+
     }
 
     @Override
