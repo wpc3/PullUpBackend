@@ -88,6 +88,21 @@ public UserProfile findUserProfileById(Long id){
 
  }
 
+ public UserProfile addAFriend(Long userId, Long friendId){
+
+    UserProfile userProfile = repository.findById(userId).orElseThrow(() -> new RuntimeException("user not found"));
+    UserProfile userProfile1 = repository.findById(friendId).orElseThrow(() -> new RuntimeException("user not found"));
+
+    userProfile.addUserProfile(userProfile1);
+    userProfile1.addUserProfile(userProfile);
+
+
+    repository.save(userProfile1);
+
+    return repository.save(userProfile);
+
+ }
+
     public UserProfile saveACourtByUsername(String username, String courtName){
     UserProfile userProfile = repository.findProfileByUsername(username);
     BasketballCourt basketballCourt = basketballCourtsRepository.findBasketballCourtByCourtName(courtName);
