@@ -61,6 +61,12 @@ public class UserProfileController {
         }
     }
 
+    @PostMapping("/userProfile/{userId}/{friendId}")
+
+    public  ResponseEntity<UserProfile> postAddFriend(Long userId, Long friendId){
+        return  new ResponseEntity<>(service.addAFriend(userId,friendId), HttpStatus.CREATED);
+    }
+
 
     @DeleteMapping("/userProfile/delete/{id}")
     public ResponseEntity<Void> removeUserProfile(@PathVariable("id") Long id){
