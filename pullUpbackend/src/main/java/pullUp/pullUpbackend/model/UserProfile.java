@@ -13,7 +13,7 @@ private Long id;
 
 private String username;
 private String password;
-private int rank;
+private int userRank;
 
 @ManyToMany
 @JoinTable(
@@ -35,11 +35,11 @@ private Set<UserProfile> userProfiles = new HashSet<>();
 
 public UserProfile(){}
 
-public UserProfile(Long id,String username, String password, int rank) {
+public UserProfile(Long id,String username, String password, int userRank) {
     this.id = id;
     this.username = username;
     this.password = password;
-    this.rank = rank;
+    this.userRank = userRank;
 
 
 }
@@ -91,12 +91,12 @@ public void setPassword(String password) {
     return this;
     }
 
-    public int getRank() {
-        return rank;
+    public int getUserRank() {
+        return userRank;
     }
 
-    public void setRank(int rank) {
-        this.rank = rank;
+    public void setUserRank(int userRank) {
+        this.userRank = userRank;
     }
 
     public Set<UserProfile> getUserProfiles() {
@@ -121,8 +121,9 @@ public void setPassword(String password) {
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", rank=" + rank +
+                ", userRank=" + userRank +
                 ", basketballCourts=" + basketballCourts +
+                ", userProfiles=" + userProfiles +
                 '}';
     }
 

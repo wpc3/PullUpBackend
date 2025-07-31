@@ -5,6 +5,8 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import pullUp.pullUpbackend.model.UserProfile;
 
+import java.util.List;
+
 @Repository
 public interface UserProfileRepository extends CrudRepository<UserProfile,Long> {
 
@@ -15,5 +17,8 @@ public interface UserProfileRepository extends CrudRepository<UserProfile,Long> 
    UserProfile findSavedCourtsByUsername(String username);
 
    boolean existsByUsername(String username);
+
+   @Query(value =  "select p.username from user_profile u join friendships f on f.user_id = u.id join user_profile p on f.friend_id = p.id where f.user_id = ?", nativeQuery = true)
+    List<String> findFriendsByUserId(Long id);
 
 }

@@ -63,7 +63,7 @@ public class UserProfileController {
 
     @PostMapping("/userProfile/{userId}/{friendId}")
 
-    public  ResponseEntity<UserProfile> postAddFriend(Long userId, Long friendId){
+    public  ResponseEntity<UserProfile> postAddFriend(@PathVariable Long userId, @PathVariable Long friendId){
         return  new ResponseEntity<>(service.addAFriend(userId,friendId), HttpStatus.CREATED);
     }
 
