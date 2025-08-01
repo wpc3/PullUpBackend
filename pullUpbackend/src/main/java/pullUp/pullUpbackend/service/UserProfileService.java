@@ -8,6 +8,7 @@ import pullUp.pullUpbackend.model.UserProfile;
 import pullUp.pullUpbackend.repository.BasketballCourtsRepository;
 import pullUp.pullUpbackend.repository.UserProfileRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -121,6 +122,10 @@ public UserProfile findUserProfileById(Long id){
         
 
     return repository.save(userProfile1);
+    }
+
+    public List<String> findAllFriendsByUserId(Long id){
+    return repository.findFriendsByUserId(id);
     }
 
 }
