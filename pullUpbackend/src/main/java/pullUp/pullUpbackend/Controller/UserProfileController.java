@@ -43,6 +43,11 @@ public class UserProfileController {
         return new ResponseEntity<>(service.findUserProfileByUserName(username), HttpStatus.OK);
     }
 
+    @GetMapping("/userProfile/{id}/friends")
+    public ResponseEntity<List<String>> showUsersFriends(@PathVariable Long id){
+        return new ResponseEntity<>(service.findAllFriendsByUserId(id), HttpStatus.OK);
+    }
+
     @PostMapping("/userProfile")
     public ResponseEntity<UserProfile> createUserProfile(@RequestBody UserProfile userProfile){
         return new ResponseEntity<>(service.createAnAccount(userProfile), HttpStatus.CREATED);
