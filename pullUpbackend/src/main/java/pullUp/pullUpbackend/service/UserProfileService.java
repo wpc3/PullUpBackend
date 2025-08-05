@@ -119,13 +119,15 @@ public UserProfile findUserProfileById(Long id){
     userProfile1.setPassword(userProfile.getPassword());
     userProfile1.setUserRank(userProfile.getUserRank());
 
-        
-
     return repository.save(userProfile1);
     }
 
     public List<String> findAllFriendsByUserId(Long id){
+
     return repository.findFriendsByUserId(id);
+
     }
+
+
 
 }
