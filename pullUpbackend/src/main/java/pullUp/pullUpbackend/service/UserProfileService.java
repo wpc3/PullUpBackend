@@ -104,6 +104,19 @@ public UserProfile findUserProfileById(Long id){
 
  }
 
+ public UserProfile removeFriend(Long userId, Long friendId){
+
+    UserProfile userProfile1 = repository.findById(userId).orElseThrow(() -> new RuntimeException("user not found"));
+    UserProfile userProfile2 = repository.findById(friendId).orElseThrow(() -> new RuntimeException("user not found"));
+
+    userProfile1.getUserProfiles().remove(userProfile2);
+    userProfile2.getUserProfiles().remove(userProfile1);
+
+    repository.save(userProfile2);
+
+    return repository.save(userProfile1);
+ }
+
     public UserProfile saveACourtByUsername(String username, String courtName){
     UserProfile userProfile = repository.findProfileByUsername(username);
     BasketballCourt basketballCourt = basketballCourtsRepository.findBasketballCourtByCourtName(courtName);
