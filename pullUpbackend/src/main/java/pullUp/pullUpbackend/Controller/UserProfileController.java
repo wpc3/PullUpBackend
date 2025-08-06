@@ -79,6 +79,12 @@ public class UserProfileController {
         return ResponseEntity.noContent().build();
     }
 
+    @DeleteMapping("/userProfile/delete/{userId}/{friendId}")
+    public ResponseEntity<Void> unfriendUsers(@PathVariable Long userId, @PathVariable Long friendId){
+        service.removeFriend(userId,friendId);
+        return ResponseEntity.noContent().build();
+    }
+
     @PutMapping("/userProfile/username/{userId}/ballCourt/{courtId}")
     public ResponseEntity<UserProfile> addCourtsToUserProfile(
             @PathVariable("userId") Long userId,

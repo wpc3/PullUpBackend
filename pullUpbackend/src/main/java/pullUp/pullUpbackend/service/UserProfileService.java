@@ -104,7 +104,7 @@ public UserProfile findUserProfileById(Long id){
 
  }
 
- public UserProfile removeFriend(Long userId, Long friendId){
+ public void removeFriend(Long userId, Long friendId){
 
     UserProfile userProfile1 = repository.findById(userId).orElseThrow(() -> new RuntimeException("user not found"));
     UserProfile userProfile2 = repository.findById(friendId).orElseThrow(() -> new RuntimeException("user not found"));
@@ -113,8 +113,8 @@ public UserProfile findUserProfileById(Long id){
     userProfile2.getUserProfiles().remove(userProfile1);
 
     repository.save(userProfile2);
+    repository.save(userProfile1);
 
-    return repository.save(userProfile1);
  }
 
     public UserProfile saveACourtByUsername(String username, String courtName){
@@ -130,7 +130,7 @@ public UserProfile findUserProfileById(Long id){
     userProfile1.setId(userProfile.getId());
     userProfile1.setUsername(userProfile.getUsername());
     userProfile1.setPassword(userProfile.getPassword());
-    userProfile1.setUserRank(userProfile.getUserRank());
+//    userProfile1.setUserRank(userProfile.getUserRank());
 
     return repository.save(userProfile1);
     }
