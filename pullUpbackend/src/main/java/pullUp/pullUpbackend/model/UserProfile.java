@@ -13,7 +13,7 @@ private Long id;
 
 private String username;
 private String password;
-private int userRank;
+//private int userRank;
 
 @ManyToMany
 @JoinTable(
@@ -31,15 +31,28 @@ private Set<BasketballCourt> basketballCourts = new HashSet<>();
 )
 private Set<UserProfile> userProfiles = new HashSet<>();
 
+@OneToMany(mappedBy = "player")
+private List<PlayerRank> recievedRanksings;
 
+@OneToMany(mappedBy = "ranker")
+private List<PlayerRank> givenRankings;
+//@ManyToMany
+//@JoinTable(
+//        name = "player_rankings",
+//        joinColumns = @JoinColumn(name = "rank_id"),
+//        inverseJoinColumns = @JoinColumn(name = "player_id")
+//)
+//
+//private Set<PlayerRank> playerRanks = new HashSet<>();
+//
 
 public UserProfile(){}
 
-public UserProfile(Long id,String username, String password, int userRank) {
+public UserProfile(Long id,String username, String password) {
     this.id = id;
     this.username = username;
     this.password = password;
-    this.userRank = userRank;
+//    this.userRank = userRank;
 
 
 }
@@ -91,13 +104,13 @@ public void setPassword(String password) {
     return this;
     }
 
-    public int getUserRank() {
-        return userRank;
-    }
-
-    public void setUserRank(int userRank) {
-        this.userRank = userRank;
-    }
+//    public int getUserRank() {
+//        return userRank;
+//    }
+//
+//    public void setUserRank(int userRank) {
+//        this.userRank = userRank;
+//    }
 
     public Set<UserProfile> getUserProfiles() {
         return userProfiles;
@@ -115,17 +128,43 @@ public void setPassword(String password) {
 
     }
 
-    @Override
-    public String toString() {
-        return "UserProfile{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", userRank=" + userRank +
-                ", basketballCourts=" + basketballCourts +
-                ", userProfiles=" + userProfiles +
-                '}';
+    public List<PlayerRank> getRecievedRanksings() {
+        return recievedRanksings;
     }
+
+    public void setRecievedRanksings(List<PlayerRank> recievedRanksings) {
+        this.recievedRanksings = recievedRanksings;
+    }
+
+    public List<PlayerRank> getGivenRankings() {
+        return givenRankings;
+    }
+
+    public void setGivenRankings(List<PlayerRank> givenRankings) {
+        this.givenRankings = givenRankings;
+    }
+
+    //    public Set<PlayerRank> getPlayerRanks() {
+//        return playerRanks;
+//    }
+//
+//    public void setPlayerRanks(Set<PlayerRank> playerRanks) {
+//        this.playerRanks = playerRanks;
+//    }
+
+
+
+    //    @Override
+//    public String toString() {
+//        return "UserProfile{" +
+//                "id=" + id +
+//                ", username='" + username + '\'' +
+//                ", password='" + password + '\'' +
+//                ", userRank=" + userRank +
+//                ", basketballCourts=" + basketballCourts +
+//                ", userProfiles=" + userProfiles +
+//                '}';
+//    }
 
     //public String getLongitude() {
 //    return longitude;
