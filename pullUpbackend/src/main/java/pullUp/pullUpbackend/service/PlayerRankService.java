@@ -33,4 +33,9 @@ public class PlayerRankService {
         return repository.save(playerRank);
 
     }
+
+    public PlayerRank showAverageRankById(Long id){
+
+        return repository.averagePlayerRankById(id);
+    }
 }
