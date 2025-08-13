@@ -34,7 +34,7 @@ public class PlayerRankService {
 
     }
 
-    public PlayerRank showAverageRankById(Long id){
+    public Double showAverageRankById(Long id){
 
         return repository.averagePlayerRankById(id);
     }

@@ -11,7 +11,7 @@ import pullUp.pullUpbackend.service.PlayerRankService;
 @Repository
 public interface PlayerRankRepository extends CrudRepository<PlayerRank,Long> {
 
-    @Query(value = "SELECT AVG(player_rank) FROM player_rank WHERE player_id = 1?", nativeQuery = true)
+    @Query(value = "SELECT AVG(player_rank) FROM player_rank WHERE player_id = ?1", nativeQuery = true)
 
-   PlayerRank averagePlayerRankById(Long id);
+   Double averagePlayerRankById(Long id);
 }

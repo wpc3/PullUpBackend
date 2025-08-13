@@ -3,10 +3,7 @@ package pullUp.pullUpbackend.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pullUp.pullUpbackend.model.PlayerRank;
 import pullUp.pullUpbackend.service.PlayerRankService;
 
@@ -23,5 +20,10 @@ public class PlayerRankController {
     public ResponseEntity<PlayerRank> postPlayerRank(@PathVariable Long userId, @PathVariable Long rankedPlayerId, @RequestBody PlayerRank playerRank){
 
         return new ResponseEntity<>(playerRankService.rankAPlayer(userId, rankedPlayerId, playerRank),HttpStatus.CREATED);
+    }
+
+    @GetMapping("/playerRank/rankings/{id}")
+    public ResponseEntity<Double> getPlayerRankById(@PathVariable Long id){
+        return new ResponseEntity<>(playerRankService.showAverageRankById(id), HttpStatus.OK);
     }
 }
