@@ -19,6 +19,7 @@ public class BasketballCourt {
     private String address;
     private String longitude;
     private String latitude;
+    private String city;
 
     @ManyToMany( mappedBy = "basketballCourts")
     @JsonIgnore
@@ -32,13 +33,14 @@ public class BasketballCourt {
 
     public BasketballCourt(){}
 
-    public BasketballCourt(String court_name, String state, Integer zipcode, String address, String longitude, String latitude ){
+    public BasketballCourt(String court_name, String state, Integer zipcode, String address, String longitude, String latitude, String city ){
         this.court_name = court_name;
         this.state =state;
         this.zipcode = zipcode;
         this.address = address;
         this.longitude = longitude;
         this.latitude = latitude;
+        this.city = city;
     }
 
     public Long getId() {
@@ -123,6 +125,14 @@ public class BasketballCourt {
         this.courtType.setCourt_type(courtTypes);
         courtType.getBasketballCourts().remove(this);
         return this;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     @Override
