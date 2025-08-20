@@ -65,6 +65,10 @@ public class BasketballCourtService {
         return repository.findAllIndoorCourtsById();
     }
 
+    public List<BasketballCourt> findAllCourtsByCity(String city){
+        return repository.findAllCourtsByCity(city);
+    }
+
 
 
 

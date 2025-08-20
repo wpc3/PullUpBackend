@@ -19,6 +19,7 @@ public interface BasketballCourtsRepository extends CrudRepository<BasketballCou
     @Query(value = "SELECT b.* FROM basketball_court b WHERE b.court_type_id = 2", nativeQuery = true)
     List<BasketballCourt> findAllIndoorCourtsById();
 
-//    @Query(value = "SELECT b.* FROM basketball_court b WHERE b.city ")
+//    @Query(value = "SELECT b.* FROM basketball_court b WHERE b.city = ?1", nativeQuery = true)
+    List<BasketballCourt> findAllCourtsByCity(String city);
 
 }
