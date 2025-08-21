@@ -42,6 +42,11 @@ public class BasketballCourtController {
         return new ResponseEntity<>(service.findAllInDoorCourts(),HttpStatus.OK);
     }
 
+    @GetMapping("/basketballCourt/city/{city}")
+    public ResponseEntity<List<BasketballCourt>> getAllCourtsByCity(@PathVariable String city){
+        return new ResponseEntity<>(service.findAllCourtsByCity(city), HttpStatus.OK);
+    }
+
     @PostMapping("/basketballCourt")
     public ResponseEntity<BasketballCourt> postCourt(@RequestBody BasketballCourt basketballCourt){
         return new ResponseEntity<>(service.createABasketballCourt(basketballCourt), HttpStatus.CREATED);
