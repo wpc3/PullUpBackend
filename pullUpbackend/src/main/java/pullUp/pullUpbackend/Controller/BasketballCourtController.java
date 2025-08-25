@@ -24,7 +24,9 @@ public class BasketballCourtController {
 
     @GetMapping("/bballCourts")
     public List<BasketballCourt> listAllCourts(){
+
         return service.findAllBasketballCourts();
+
     }
 
     @GetMapping("/basketballCourt/{courtName}")
