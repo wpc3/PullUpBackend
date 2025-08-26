@@ -69,7 +69,10 @@ public class BasketballCourtService {
         return repository.findAllCourtsByCity(city);
     }
 
+    public List<BasketballCourt> findAllBallCourtsByZipCode(Integer zipCode){
 
+        return repository.findAllCourtsByZipCode(zipCode);
+    }
 
 
 }
