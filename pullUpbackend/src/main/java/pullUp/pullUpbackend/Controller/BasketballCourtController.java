@@ -49,6 +49,11 @@ public class BasketballCourtController {
         return new ResponseEntity<>(service.findAllCourtsByCity(city), HttpStatus.OK);
     }
 
+    @GetMapping("/basketballCourt/zipCode/{zipcode}")
+    public ResponseEntity<List<BasketballCourt>> getAllCourtsByZipCode(@PathVariable Integer zipcode){
+        return new ResponseEntity<>(service.findAllBallCourtsByZipCode(zipcode),HttpStatus.OK);
+    }
+
     @PostMapping("/basketballCourt")
     public ResponseEntity<BasketballCourt> postCourt(@RequestBody BasketballCourt basketballCourt){
         return new ResponseEntity<>(service.createABasketballCourt(basketballCourt), HttpStatus.CREATED);
