@@ -71,7 +71,7 @@ public class BasketballCourtService {
 
     public List<BasketballCourt> findAllBallCourtsByZipCode(Integer zipCode){
 
-        return repository.findAllCourtsByZipCode(zipCode);
+        return repository.findAllCourtsByZipcode(zipCode);
     }
 
 
