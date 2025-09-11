@@ -141,7 +141,7 @@ public UserProfile findUserProfileById(Long id){
 
     }
 
-    public List<UserProfile> findALlUsersByRankings(Integer rank){
+    public List<String> findALlUsersByRankings(Integer rank){
 
     return repository.findProfileByRanking(rank);
     }

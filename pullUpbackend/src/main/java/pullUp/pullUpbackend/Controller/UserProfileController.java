@@ -48,6 +48,11 @@ public class UserProfileController {
         return new ResponseEntity<>(service.findAllFriendsByUserId(id), HttpStatus.OK);
     }
 
+    @GetMapping("/userProfile/ranking/{rank}")
+    public ResponseEntity<List<String>> showUserProfilesByRank(@PathVariable Integer rank){
+        return new ResponseEntity<>(service.findALlUsersByRankings(rank), HttpStatus.OK);
+    }
+
     @PostMapping("/userProfile")
     public ResponseEntity<UserProfile> createUserProfile(@RequestBody UserProfile userProfile){
         return new ResponseEntity<>(service.createAnAccount(userProfile), HttpStatus.CREATED);
