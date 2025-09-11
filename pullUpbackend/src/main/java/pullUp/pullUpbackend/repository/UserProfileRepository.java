@@ -21,7 +21,7 @@ public interface UserProfileRepository extends CrudRepository<UserProfile,Long> 
    @Query(value =  "select p.username from user_profile u join friendships f on f.user_id = u.id join user_profile p on f.friend_id = p.id where f.user_id = ?", nativeQuery = true)
     List<String> findFriendsByUserId(Long id);
 
-   @Query(value = "select u.username from user_profile u join player_rank r on f.user_id = r.player_id where avg(player_rank) = ?", nativeQuery = true)
-   List<UserProfile> findProfileByRanking(Integer ranking);
+   @Query(value = "select u.username from user_profile u join player_rank r on u.id = r.player_id group by u.username having avg(player_rank) = ?", nativeQuery = true)
+   List<String> findProfileByRanking(Integer ranking);
 
 }
