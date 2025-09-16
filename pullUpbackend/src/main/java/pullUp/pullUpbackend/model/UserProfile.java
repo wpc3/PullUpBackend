@@ -36,6 +36,9 @@ private List<PlayerRank> recievedRanksings;
 
 @OneToMany(mappedBy = "ranker")
 private List<PlayerRank> givenRankings;
+
+@OneToMany(mappedBy = "user")
+private List<Message> messages;
 //@ManyToMany
 //@JoinTable(
 //        name = "player_rankings",
