@@ -22,6 +22,11 @@ public class Message {
         this.sentAt = LocalDateTime.now();
     }
 
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private UserProfile user;
+
+
     public Message() {
     }
 
