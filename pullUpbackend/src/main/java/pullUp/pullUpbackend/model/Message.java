@@ -1,8 +1,11 @@
 package pullUp.pullUpbackend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Message {
@@ -22,9 +25,9 @@ public class Message {
         this.sentAt = LocalDateTime.now();
     }
 
-    @ManyToOne
-    @JoinColumn(name = "userId")
-    private UserProfile user;
+    @ManyToMany( mappedBy = "messages")
+    @JsonIgnore
+    private Set<UserProfile> userProfiles = new HashSet<>();
 
 
     public Message() {
@@ -59,4 +62,20 @@ public class Message {
     public void setSentAt(LocalDateTime sentAt) {
         this.sentAt = sentAt;
     }
+
+    public Set<UserProfile> getUserProfiles() {
+        return userProfiles;
+    }
+
+    public void setUserProfiles(Set<UserProfile> userProfiles) {
+        this.userProfiles = userProfiles;
+    }
+
+    //    public UserProfile getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(UserProfile user) {
+//        this.user = user;
+//    }
 }
