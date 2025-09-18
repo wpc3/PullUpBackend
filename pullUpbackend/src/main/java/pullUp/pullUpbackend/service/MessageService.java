@@ -15,7 +15,10 @@ public class MessageService {
         this.messageRepository = messageRepository;
     }
 
-    public Message createAMessage(){
+    public Message createAMessage(Message message, Long senderId, Long recieverId){
+
+
+
         return  null;
     }
 }
