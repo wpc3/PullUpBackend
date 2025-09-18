@@ -25,9 +25,18 @@ public class Message {
         this.sentAt = LocalDateTime.now();
     }
 
-    @ManyToMany( mappedBy = "messages")
-    @JsonIgnore
-    private Set<UserProfile> userProfiles = new HashSet<>();
+//    @ManyToMany( mappedBy = "messages")
+//    @JsonIgnore
+//    private Set<UserProfile> userProfiles = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name="sender_id")
+    private UserProfile sender;
+
+    @ManyToOne
+    @JoinColumn(name = "receiver_id")
+    private UserProfile receiver;
+
 
 
     public Message() {
@@ -63,13 +72,29 @@ public class Message {
         this.sentAt = sentAt;
     }
 
-    public Set<UserProfile> getUserProfiles() {
-        return userProfiles;
+    public UserProfile getSender() {
+        return sender;
     }
 
-    public void setUserProfiles(Set<UserProfile> userProfiles) {
-        this.userProfiles = userProfiles;
+    public void setSender(UserProfile sender) {
+        this.sender = sender;
     }
+
+    public UserProfile getReceiver() {
+        return receiver;
+    }
+
+    public void setReceiver(UserProfile receiver) {
+        this.receiver = receiver;
+    }
+
+    //    public Set<UserProfile> getUserProfiles() {
+//        return userProfiles;
+//    }
+//
+//    public void setUserProfiles(Set<UserProfile> userProfiles) {
+//        this.userProfiles = userProfiles;
+//    }
 
     //    public UserProfile getUser() {
 //        return user;

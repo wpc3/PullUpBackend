@@ -31,13 +31,14 @@ private Set<BasketballCourt> basketballCourts = new HashSet<>();
 )
 private Set<UserProfile> userProfiles = new HashSet<>();
 
-@ManyToMany
-@JoinTable(
-        name = "messagesFromUsers",
-        joinColumns = @JoinColumn(name = "userProfile_id"),
-        inverseJoinColumns = @JoinColumn(name = "message_id")
-)
-private Set<Message> messages = new HashSet<>();
+//@ManyToMany
+//@JoinTable(
+//        name = "messagesFromUsers",
+//        joinColumns = @JoinColumn(name = "userProfile_id"),
+//        joinColumns= @JoinColumn(name = "reciever_id"),
+//        inverseJoinColumns = @JoinColumn(name = "message_id")
+//)
+//private Set<Message> messages = new HashSet<>();
 
 @OneToMany(mappedBy = "player")
 private List<PlayerRank> recievedRanksings;
@@ -45,8 +46,8 @@ private List<PlayerRank> recievedRanksings;
 @OneToMany(mappedBy = "ranker")
 private List<PlayerRank> givenRankings;
 
-//@OneToMany(mappedBy = "user")
-//private List<Message> messages;
+@OneToMany(mappedBy = "sender")
+private List<Message> messages;
 //@ManyToMany
 //@JoinTable(
 //        name = "player_rankings",
@@ -155,21 +156,21 @@ public void setPassword(String password) {
         this.givenRankings = givenRankings;
     }
 
-    public Set<Message> getMessages() {
-        return messages;
-    }
-
-    public void setMessages(Set<Message> messages) {
-        this.messages = messages;
-    }
-
-    //    public List<Message> getMessages() {
+//    public Set<Message> getMessages() {
 //        return messages;
 //    }
 //
-//    public void setMessages(List<Message> messages) {
+//    public void setMessages(Set<Message> messages) {
 //        this.messages = messages;
 //    }
+
+        public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
 
     //    public Set<PlayerRank> getPlayerRanks() {
 //        return playerRanks;
