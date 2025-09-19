@@ -12,7 +12,7 @@ public class Message {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long messageId;
+    private Long messageId;
 
     private String content;
 
@@ -42,7 +42,7 @@ public class Message {
     public Message() {
     }
 
-    public Message(long messageId, String content, LocalDateTime sentAt) {
+    public Message(Long messageId, String content, LocalDateTime sentAt) {
         this.messageId = messageId;
         this.content = content;
         this.sentAt = sentAt;
@@ -52,7 +52,7 @@ public class Message {
         return messageId;
     }
 
-    public void setMessageId(long messageId) {
+    public void setMessageId(Long messageId) {
         this.messageId = messageId;
     }
 
