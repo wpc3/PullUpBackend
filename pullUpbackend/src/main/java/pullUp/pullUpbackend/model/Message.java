@@ -30,10 +30,12 @@ public class Message {
 //    private Set<UserProfile> userProfiles = new HashSet<>();
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name="sender_id")
     private UserProfile sender;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "receiver_id")
     private UserProfile receiver;
 
