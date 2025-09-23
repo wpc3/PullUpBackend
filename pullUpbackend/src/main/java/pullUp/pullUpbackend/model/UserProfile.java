@@ -1,6 +1,8 @@
 package pullUp.pullUpbackend.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -30,6 +32,10 @@ private Set<BasketballCourt> basketballCourts = new HashSet<>();
         inverseJoinColumns = @JoinColumn(name = "friend_id")
 )
 private Set<UserProfile> userProfiles = new HashSet<>();
+
+@ManyToMany(mappedBy = "participants")
+@JsonIgnore
+private List<Conversation> conversations = new ArrayList<>();
 
 //@ManyToMany
 //@JoinTable(
@@ -170,6 +176,14 @@ public void setPassword(String password) {
 
     public void setMessages(List<Message> messages) {
         this.messages = messages;
+    }
+
+    public List<Conversation> getConversations() {
+        return conversations;
+    }
+
+    public void setConversations(List<Conversation> conversations) {
+        this.conversations = conversations;
     }
 
     //    public Set<PlayerRank> getPlayerRanks() {

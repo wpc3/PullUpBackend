@@ -20,8 +20,8 @@ public class MessageController {
     }
 
 
-    @PostMapping("/userProfile/messaging/{senderId}/{receiverId}")
-    public ResponseEntity<Message> postAMessageToAUser(@PathVariable Long senderId, @PathVariable Long receiverId, @RequestBody Message message){
-        return new ResponseEntity<>(messageService.createAMessage(message,senderId,receiverId), HttpStatus.CREATED);
+    @PostMapping("/userProfile/messaging/{senderId}")
+    public ResponseEntity<Message> postAMessageToAUser(@PathVariable Long senderId, @RequestBody Message message){
+        return new ResponseEntity<>(messageService.createAMessage(message,senderId), HttpStatus.CREATED);
     }
 }
