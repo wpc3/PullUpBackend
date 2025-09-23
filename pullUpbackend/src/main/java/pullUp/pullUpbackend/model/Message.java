@@ -34,11 +34,15 @@ public class Message {
     @JoinColumn(name="sender_id")
     private UserProfile sender;
 
+//    @ManyToOne
+//    @JsonIgnore
+//    @JoinColumn(name = "receiver_id")
+//    private UserProfile receiver;
+
     @ManyToOne
     @JsonIgnore
-    @JoinColumn(name = "receiver_id")
-    private UserProfile receiver;
-
+    @JoinColumn(name = "convoId")
+    private Conversation conversation;
 
 
     public Message() {
@@ -82,13 +86,13 @@ public class Message {
         this.sender = sender;
     }
 
-    public UserProfile getReceiver() {
-        return receiver;
-    }
-
-    public void setReceiver(UserProfile receiver) {
-        this.receiver = receiver;
-    }
+//    public UserProfile getReceiver() {
+//        return receiver;
+//    }
+//
+//    public void setReceiver(UserProfile receiver) {
+//        this.receiver = receiver;
+//    }
 
     //    public Set<UserProfile> getUserProfiles() {
 //        return userProfiles;

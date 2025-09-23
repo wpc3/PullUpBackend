@@ -20,18 +20,18 @@ public class MessageService {
         this.userProfileRepository = userProfileRepository;
     }
 
-    public Message createAMessage(Message message, Long senderId, Long recieverId){
+    public Message createAMessage(Message message, Long senderId){
 
         UserProfile sender = userProfileRepository.findById(senderId).orElseThrow(() -> new RuntimeException("user not found"));
-        UserProfile receiver = userProfileRepository.findById(recieverId).orElseThrow(() -> new RuntimeException("user not found"));
+//        UserProfile receiver = userProfileRepository.findById(recieverId).orElseThrow(() -> new RuntimeException("user not found"));
 
-        message.setReceiver(receiver);
+//        message.setReceiver(receiver);
         message.setSender(sender);
         message.setMessageId(null);
         message.setSentAt(null);
 
         sender.getMessages().add(message);
-        receiver.getMessages().add(message);
+//        receiver.getMessages().add(message);
 
         return  messageRepository.save(message);
     }
