@@ -3,6 +3,7 @@ package pullUp.pullUpbackend.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pullUp.pullUpbackend.model.Conversation;
+import pullUp.pullUpbackend.model.Message;
 import pullUp.pullUpbackend.model.UserProfile;
 import pullUp.pullUpbackend.repository.ConversationRepository;
 import pullUp.pullUpbackend.repository.UserProfileRepository;
@@ -21,10 +22,12 @@ public class ConversationService {
         this.userProfileRepository = userProfileRepository;
     }
 
-    public Conversation createAConversation(Conversation conversation, List<Long> userProfileIds){
+    public Conversation createAConversation(Conversation conversation, List<Long> userProfileIds, List<Message> messageList){
         List<UserProfile> userProfiles = (List<UserProfile>) userProfileRepository.findAllById(userProfileIds);
 
         conversation.setParticipants(userProfiles);
+        conversation.setMessages(messageList);
+
 
         return conversationRepository.save(conversation);
     }

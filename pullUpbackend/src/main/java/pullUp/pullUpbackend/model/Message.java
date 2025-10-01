@@ -86,7 +86,15 @@ public class Message {
         this.sender = sender;
     }
 
-//    public UserProfile getReceiver() {
+    public Conversation getConversation() {
+        return conversation;
+    }
+
+    public void setConversation(Conversation conversation) {
+        this.conversation = conversation;
+    }
+
+    //    public UserProfile getReceiver() {
 //        return receiver;
 //    }
 //
