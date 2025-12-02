@@ -42,7 +42,9 @@ public class MessageService {
         return  messageRepository.save(message);
     }
 
-    public Message createAChat(Long convoId, Long senderId, String content){
+
+
+    public Message sendMessageInAChat(Long convoId, Long senderId, String content){
         UserProfile userProfile = userProfileRepository.findById(senderId).orElseThrow((() -> new RuntimeException("user not found")));
         Conversation conversation = conversationRepository.findById(convoId).orElseThrow((() -> new RuntimeException("conversation ID not found")));
 
