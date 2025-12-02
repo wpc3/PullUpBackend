@@ -24,6 +24,7 @@ public class MessageService {
                           @Autowired ConversationRepository conversationRepository) {
         this.messageRepository = messageRepository;
         this.userProfileRepository = userProfileRepository;
+        this.conversationRepository = conversationRepository;
     }
 
     public Message createAMessage(Message message, Long senderId){

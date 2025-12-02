@@ -31,6 +31,8 @@ public class Conversation {
         this.name = name;
     }
 
+    public Conversation(){}
+
     public Long getConvoId() {
         return convoId;
     }
