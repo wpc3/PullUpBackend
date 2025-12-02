@@ -22,11 +22,11 @@ public class ConversationService {
         this.userProfileRepository = userProfileRepository;
     }
 
-    public Conversation createAConversation(Conversation conversation, List<Long> userProfileIds, List<Message> messageList){
+    public Conversation createAConversation(Conversation conversation, List<Long> userProfileIds){
         List<UserProfile> userProfiles = (List<UserProfile>) userProfileRepository.findAllById(userProfileIds);
 
         conversation.setParticipants(userProfiles);
-        conversation.setMessages(messageList);
+
 
 
         return conversationRepository.save(conversation);
