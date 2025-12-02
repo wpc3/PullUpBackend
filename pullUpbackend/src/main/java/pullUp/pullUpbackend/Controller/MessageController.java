@@ -24,4 +24,9 @@ public class MessageController {
     public ResponseEntity<Message> postAMessageToAUser(@PathVariable Long senderId, @RequestBody Message message){
         return new ResponseEntity<>(messageService.createAMessage(message,senderId), HttpStatus.CREATED);
     }
+
+    @PostMapping("/userProfile/messaging/{senderId}/{convoId}")
+    public ResponseEntity<Message> postAMessageInAChat(@PathVariable Long senderId, @PathVariable Long convoId, @RequestBody String content){
+        return new ResponseEntity<>(messageService.sendMessageInAChat(convoId,senderId,content), HttpStatus.CREATED);
+    }
 }
