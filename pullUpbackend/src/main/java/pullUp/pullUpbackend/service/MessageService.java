@@ -10,6 +10,7 @@ import pullUp.pullUpbackend.repository.MessageRepository;
 import pullUp.pullUpbackend.repository.UserProfileRepository;
 
 import java.nio.channels.Channel;
+import java.util.List;
 
 @Service
 public class MessageService {
@@ -45,7 +46,7 @@ public class MessageService {
 
 
 
-    public Message sendMessageInAChat(Long convoId, Long senderId, String content){
+    public Message sendMessageInAChat(Long convoId, Long senderId, String content) {
         UserProfile userProfile = userProfileRepository.findById(senderId).orElseThrow((() -> new RuntimeException("user not found")));
         Conversation conversation = conversationRepository.findById(convoId).orElseThrow((() -> new RuntimeException("conversation ID not found")));
 
@@ -55,7 +56,9 @@ public class MessageService {
         message.setConversation(conversation);
 
         return messageRepository.save(message);
-
-
     }
+    public List<String> getMessagesByUserId(Long userId){
+        return messageRepository.readMessagesByUserId(userId);
+        }
+
 }
