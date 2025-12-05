@@ -3,12 +3,11 @@ package pullUp.pullUpbackend.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pullUp.pullUpbackend.model.Message;
 import pullUp.pullUpbackend.service.MessageService;
+
+import java.util.List;
 
 @RestController
 public class MessageController {
@@ -28,5 +27,10 @@ public class MessageController {
     @PostMapping("/userProfile/messaging/{senderId}/{convoId}")
     public ResponseEntity<Message> postAMessageInAChat(@PathVariable Long senderId, @PathVariable Long convoId, @RequestBody String content){
         return new ResponseEntity<>(messageService.sendMessageInAChat(convoId,senderId,content), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/userProfile/messaging/view/{userId}")
+    public ResponseEntity<List<String>> getAllMessagesByUserId(@PathVariable Long userId){
+        return new ResponseEntity<>(messageService.getMessagesByUserId(userId),HttpStatus.OK);
     }
 }
