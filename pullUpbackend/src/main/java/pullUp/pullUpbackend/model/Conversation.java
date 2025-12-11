@@ -20,8 +20,8 @@ public class Conversation {
     @ManyToMany
     @JoinTable(
             name = "conversation_users",
-            joinColumns = @JoinColumn(name = "sender_id"),
-            inverseJoinColumns = @JoinColumn(name = "reciever_id")
+            joinColumns = @JoinColumn(name = "conversation_id"),
+            inverseJoinColumns = @JoinColumn(name = "userProfile_id")
     )
     private List<UserProfile> participants = new ArrayList<>();
 

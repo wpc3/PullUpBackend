@@ -26,4 +26,6 @@ public class ConversationController {
     public ResponseEntity<Conversation> postAconversation(@RequestBody Conversation conversation,@PathVariable List<Long> userIds){
     return new ResponseEntity<>(conversationService.createAConversation(conversation,userIds), HttpStatus.CREATED);
     }
+
+
 }
