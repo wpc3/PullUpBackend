@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface MessageRepository extends CrudRepository<Message, Long> {
 
-    @Query(value = " select u.username, m.content from message m join conversation_users c on c.sender_id = m.convo_id join user_profile u on u.id = m.sender_id where c.reciever_id = ?", nativeQuery = true)
+    @Query(value = " select u.username, m.content from message m join conversation_users c on c.conversation_id = m.convo_id join user_profile u on u.id = m.sender_id where c.userProfile_id = ?", nativeQuery = true)
     List<String> readMessagesByUserId(Long userId);
 
 }
