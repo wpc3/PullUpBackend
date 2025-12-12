@@ -3,10 +3,7 @@ package pullUp.pullUpbackend.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pullUp.pullUpbackend.model.Conversation;
 import pullUp.pullUpbackend.service.ConversationService;
 
@@ -27,5 +24,8 @@ public class ConversationController {
     return new ResponseEntity<>(conversationService.createAConversation(conversation,userIds), HttpStatus.CREATED);
     }
 
-
+    @GetMapping("/conversations/{userProfileId}")
+    public ResponseEntity<List<Conversation>> getAllConversationByUserProfile(@PathVariable Long userProfileId){
+        return new ResponseEntity<>(conversationService.findConversationByUserProfile(userProfileId),HttpStatus.OK);
+    }
 }

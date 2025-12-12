@@ -32,7 +32,7 @@ public class ConversationService {
         return conversationRepository.save(conversation);
     }
 
-    public List<Conversation> conversation(Long userProfileId){
+    public List<Conversation> findConversationByUserProfile(Long userProfileId){
         return conversationRepository.findAllCoversationsByUserProfileId(userProfileId);
     }
 }
