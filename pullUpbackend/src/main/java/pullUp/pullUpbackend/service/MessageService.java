@@ -60,5 +60,8 @@ public class MessageService {
     public List<String> getMessagesByUserId(Long userId){
         return messageRepository.readMessagesByUserId(userId);
         }
-
+    public void deleteAMessageById(Message messageToDelete){
+        messageRepository.delete(messageToDelete);
+        System.out.println("Message: " + messageToDelete.getMessageId() + " has been deleted.");
+    }
 }
