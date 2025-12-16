@@ -60,8 +60,9 @@ public class MessageService {
     public List<String> getMessagesByUserId(Long userId){
         return messageRepository.readMessagesByUserId(userId);
         }
-    public void deleteAMessageById(Message messageToDelete){
-        messageRepository.delete(messageToDelete);
-        System.out.println("Message: " + messageToDelete.getMessageId() + " has been deleted.");
+    public void deleteAMessage(Long messageId){
+       Message message = messageRepository.findById(messageId).orElseThrow((() -> new RuntimeException("message id not found")));
+       messageRepository.delete(message);
+        System.out.println("Message " + messageId + " has been deleted.");
     }
 }
