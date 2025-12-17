@@ -35,4 +35,9 @@ public class ConversationService {
     public List<Conversation> findConversationByUserProfile(Long userProfileId){
         return conversationRepository.findAllCoversationsByUserProfileId(userProfileId);
     }
+
+    public void deleteConvoById(Long convoId){
+        Conversation conversation = conversationRepository.findById(convoId).orElseThrow((() -> new RuntimeException("conversation id not found")));
+        conversationRepository.delete(conversation);
+    }
 }
