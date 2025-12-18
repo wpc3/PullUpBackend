@@ -28,4 +28,10 @@ public class ConversationController {
     public ResponseEntity<List<Conversation>> getAllConversationByUserProfile(@PathVariable Long userProfileId){
         return new ResponseEntity<>(conversationService.findConversationByUserProfile(userProfileId),HttpStatus.OK);
     }
+
+    @DeleteMapping("/conversation/delete/{convoId}")
+    public ResponseEntity<Void> deleteAConversationById(@PathVariable Long convoId){
+        conversationService.deleteConvoById(convoId);
+        return ResponseEntity.noContent().build();
+    }
 }
