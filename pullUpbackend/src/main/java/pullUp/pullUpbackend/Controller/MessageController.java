@@ -34,7 +34,7 @@ public class MessageController {
         return new ResponseEntity<>(messageService.getMessagesByUserId(userId),HttpStatus.OK);
     }
 
-    @DeleteMapping("/userProfile/delete/{messageId}")
+    @DeleteMapping("/messages/delete/{messageId}")
     public ResponseEntity<Void> deletingAMessage(@PathVariable Long messageId){
         messageService.deleteAMessage(messageId);
         return ResponseEntity.noContent().build();
