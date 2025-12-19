@@ -21,7 +21,7 @@ public class Conversation {
     @JoinTable(
             name = "conversation_users",
             joinColumns = @JoinColumn(name = "conversation_id"),
-            inverseJoinColumns = @JoinColumn(name = "userProfile_id")
+            inverseJoinColumns = @JoinColumn(name = "user_profile_id")
     )
     private List<UserProfile> participants = new ArrayList<>();
 
